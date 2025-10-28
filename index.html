@@ -331,6 +331,35 @@
             font-size: 0.9rem;
             margin-top: 0.25rem;
         }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                width: 100%;
+                order: 2;
+                padding: 1.5rem;
+            }
+
+            .right-panel {
+                width: 100%;
+                order: 1;
+            }
+
+            .chat-area {
+                padding: 1.5rem;
+            }
+
+            .chat-input-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .chat-message {
+                max-width: 85%;
+            }
+        }
     </style>
 </head>
 <body>
