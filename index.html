@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avocat Virtuel™ - Consultation Juridique en Ligne</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            background: white;
+            color: #475569;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-icon {
+            font-size: 1rem;
+        }
+
+        .online-status {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            width: 25%;
+            background: white;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            background: #f9fafb;
+        }
+
+        .welcome-section {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .assistant-avatar {
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .welcome-text {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .features-list li {
+            color: #64748b;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .help-prompt {
+            color: #64748b;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .availability-badge {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .topics-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .topic-button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .topic-button:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+            transform: translateX(4px);
+        }
+
+        .topic-icon {
+            font-size: 1.25rem;
+        }
+
+        .custom-question {
+            background: #fef3c7;
+            border-color: #fbbf24;
+        }
+
+        .custom-question:hover {
+            background: #fde68a;
+            border-color: #f59e0b;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-message {
+            max-width: 70%;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            line-height: 1.5;
+        }
+
+        .message-bot {
+            background: white;
+            align-self: flex-start;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .message-user {
+            background: #3b82f6;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-input-container {
+            padding: 1.5rem 2rem;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 1px solid #d1d5db;
+            border-radius: 24px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input:focus {
+            border-color: #3b82f6;
+        }
+
+        .send-button {
+            width: 48px;
+            height: 48px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            font-size: 1.25rem;
+        }
+
+        .send-button:hover {
+            background: #2563eb;
+        }
+
+        .info-section {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        .info-title {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-text {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .pricing {
+            background: #f0fdf4;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .pricing-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #15803d;
+        }
+
+        .pricing-details {
+            color: #166534;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">AV</div>
+            <div class="brand-name">Avocat Virtuel™</div>
+        </div>
+        <div class="trust-badges">
+            <div class="badge">
+                <span class="badge-icon">👨‍⚖️</span>
+                <span>Avocats certifiés</span>
+            </div>
+            <div class="badge">
+                <span class="badge-icon">🔒</span>
+                <span>100% confidentiel</span>
+            </div>
+            <div class="badge">
+                <span class="badge-icon">⚡</span>
+                <span>Réponse immédiate</span>
+            </div>
+            <div class="badge">
+                <span class="badge-icon">✓</span>
+                <span>Droit.Legal</span>
+            </div>
+        </div>
+        <div class="online-status">● En ligne</div>
+    </div>
+
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="topics-section">
+                <div class="section-title">Sujets populaires</div>
+                
+                <button class="topic-button" onclick="selectTopic('divorce')">
+                    <span class="topic-icon">💔</span>
+                    <span>Question sur un divorce</span>
+                </button>
+
+                <button class="topic-button" onclick="selectTopic('logement')">
+                    <span class="topic-icon">🏠</span>
+                    <span>Problème de logement</span>
+                </button>
+
+                <button class="topic-button" onclick="selectTopic('travail')">
+                    <span class="topic-icon">💼</span>
+                    <span>Droit du travail</span>
+                </button>
+
+                <button class="topic-button" onclick="selectTopic('succession')">
+                    <span class="topic-icon">📜</span>
+                    <span>Testament et succession</span>
+                </button>
+
+                <button class="topic-button" onclick="selectTopic('contrat')">
+                    <span class="topic-icon">📄</span>
+                    <span>Révision de contrat</span>
+                </button>
+
+                <button class="topic-button custom-question" onclick="selectTopic('autre')">
+                    <span class="topic-icon">⚖️</span>
+                    <span>Autre question juridique</span>
+                </button>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title">Consultation avec un avocat</div>
+                <div class="info-text">
+                    Après cette analyse gratuite, vous pourrez consulter un avocat certifié par vidéoconférence pour obtenir des conseils juridiques personnalisés.
+                </div>
+                <div class="pricing">
+                    <div class="pricing-amount">50$</div>
+                    <div class="pricing-details">pour 30 minutes de consultation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="chat-area" id="chatArea">
+                <div class="chat-message message-bot">
+                    Bonjour! Je suis là pour vous aider avec vos questions juridiques. Vous pouvez sélectionner un sujet à gauche ou me décrire directement votre situation.
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <input 
+                    type="text" 
+                    class="chat-input" 
+                    id="messageInput"
+                    placeholder="Tapez votre message..."
+                    onkeypress="handleKeyPress(event)"
+                >
+                <button class="send-button" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectTopic(topic) {
+            const topics = {
+                'divorce': 'Je voudrais poser une question sur un divorce.',
+                'logement': 'J\'ai un problème de logement.',
+                'travail': 'J\'ai une question sur le droit du travail.',
+                'succession': 'Je voudrais parler de testament et succession.',
+                'contrat': 'J\'aimerais faire réviser un contrat.',
+                'autre': 'J\'ai une autre question juridique.'
+            };
+            
+            addMessage(topics[topic], 'user');
+            
+            setTimeout(() => {
+                addMessage('Parfait! Pouvez-vous me donner plus de détails sur votre situation? Plus vous partagerez d\'informations, mieux je pourrai vous aider à préparer votre consultation avec un avocat.', 'bot');
+            }, 500);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                setTimeout(() => {
+                    addMessage('Merci pour ces informations. Je vais analyser votre situation et vous proposer les meilleures options. Un avocat spécialisé pourra vous donner des conseils juridiques précis lors d\'une consultation vidéo.', 'bot');
+                }, 800);
+            }
+        }
+
+        function addMessage(text, sender) {
+            const chatArea = document.getElementById('chatArea');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message message-${sender}`;
+            messageDiv.textContent = text;
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
