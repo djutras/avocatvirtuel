@@ -70,6 +70,52 @@
             font-size: 1rem;
         }
 
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 100;
+            min-width: 200px;
+            padding: 1rem;
+        }
+
+        .menu-dropdown.active {
+            display: block;
+        }
+
+        .menu-dropdown .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #475569;
+            gap: 0.5rem;
+        }
+
+        .menu-dropdown .badge:last-child {
+            border-bottom: none;
+        }
+
+        .menu-dropdown .badge-icon {
+            font-size: 1.25rem;
+        }
+
         .online-status {
             background: #10b981;
             color: white;
@@ -336,7 +382,15 @@
             margin-top: 0.25rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 728px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            .trust-badges {
+                display: none;
+            }
+
             body {
                 width: 100vw;
             }
@@ -417,6 +471,25 @@
         <div class="logo-section">
             <div class="logo">AV</div>
             <div class="brand-name">Avocat Virtuel™</div>
+            <button class="hamburger-menu" id="hamburgerBtn" onclick="toggleMenu()">☰</button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <div class="badge">
+                    <span class="badge-icon">👨‍⚖️</span>
+                    <span>Avocats certifiés</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">🔒</span>
+                    <span>100% confidentiel</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>Réponse immédiate</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>Droit.Legal</span>
+                </div>
+            </div>
         </div>
         <div class="trust-badges">
             <div class="badge">
@@ -553,6 +626,19 @@
                 sendMessage();
             }
         }
+
+        function toggleMenu() {
+            const dropdown = document.getElementById('menuDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            if (!hamburger.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
