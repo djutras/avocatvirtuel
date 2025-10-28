@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV Logo Design Preview - All Logos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        .logo-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 140px;
+            width: 100%;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .logo-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .logo-description {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .logo-features {
+            background: #f0fdf4;
+            border-left: 3px solid #10b981;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #166534;
+            width: 100%;
+        }
+
+        /* Logo 1: Gradient Shield */
+        .logo-shield {
+            width: 100px;
+            height: 120px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 16px 16px 8px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        /* Logo 2: Modern Geometric */
+        .logo-geometric {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #3b82f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-geometric::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: #3b82f6;
+            opacity: 0.1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+        }
+
+        /* Logo 3: Badge Premium */
+        .logo-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #334155;
+            box-shadow: 
+                0 0 0 3px white,
+                0 0 0 5px #3b82f6,
+                0 8px 20px rgba(59, 130, 246, 0.3);
+            border: 2px solid #94a3b8;
+        }
+
+        /* Logo 4: Legal Accent */
+        .logo-legal {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .logo-legal::after {
+            content: '⚖';
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        /* Logo 5: Bold Modern Gradient */
+        .logo-bold-gradient {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+            letter-spacing: -2px;
+        }
+
+        /* Logo 6: Minimalist with Legal Line */
+        .logo-minimalist {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 2.5px solid #3b82f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #3b82f6;
+            position: relative;
+        }
+
+        .logo-minimalist::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        }
+
+        @media (max-width: 1024px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AV Logo Design Preview</h1>
+        <p class="subtitle">All 6 designs - Pick your favorite</p>
+
+        <div class="logo-grid">
+            <!-- Logo 1: Shield Gradient -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-shield">AV</div>
+                </div>
+                <div class="logo-title">🛡️ Shield Gradient</div>
+                <div class="logo-description">
+                    Protective shield with blue gradient. Conveys trust and security.
+                </div>
+                <div class="logo-features">
+                    ✓ Protective<br>
+                    ✓ Professional<br>
+                    ✓ Distinctive
+                </div>
+            </div>
+
+            <!-- Logo 2: Geometric Modern -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-geometric">AV</div>
+                </div>
+                <div class="logo-title">⬜ Geometric Modern</div>
+                <div class="logo-description">
+                    Clean minimalist square with geometric accent. Forward-thinking.
+                </div>
+                <div class="logo-features">
+                    ✓ Minimalist<br>
+                    ✓ Modern<br>
+                    ✓ Scalable
+                </div>
+            </div>
+
+            <!-- Logo 3: Premium Badge -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-badge">AV</div>
+                </div>
+                <div class="logo-title">🎖️ Premium Badge</div>
+                <div class="logo-description">
+                    Circular badge with ring effect. Premium certification feel.
+                </div>
+                <div class="logo-features">
+                    ✓ Certified look<br>
+                    ✓ Premium<br>
+                    ✓ Recognizable
+                </div>
+            </div>
+
+            <!-- Logo 4: Legal Accent -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-legal">AV</div>
+                </div>
+                <div class="logo-title">⚖️ Legal Accent</div>
+                <div class="logo-description">
+                    Dark gradient with subtle scales symbol. Currently on website.
+                </div>
+                <div class="logo-features">
+                    ✓ Legal<br>
+                    ✓ Professional<br>
+                    ✓ Direct
+                </div>
+            </div>
+
+            <!-- Logo 5: Bold Modern Gradient -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-bold-gradient">AV</div>
+                </div>
+                <div class="logo-title">🌈 Bold Gradient</div>
+                <div class="logo-description">
+                    Vibrant blue-to-purple. Exciting and dynamic energy.
+                </div>
+                <div class="logo-features">
+                    ✓ Exciting<br>
+                    ✓ Dynamic<br>
+                    ✓ Memorable
+                </div>
+            </div>
+
+            <!-- Logo 6: Minimalist Legal -->
+            <div class="logo-card">
+                <div class="logo-display">
+                    <div class="logo-minimalist">AV</div>
+                </div>
+                <div class="logo-title">✨ Minimalist Legal</div>
+                <div class="logo-description">
+                    Simple frame with legal accent line. Classic and contemporary.
+                </div>
+                <div class="logo-features">
+                    ✓ Clean<br>
+                    ✓ Foundation symbol<br>
+                    ✓ Versatile
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

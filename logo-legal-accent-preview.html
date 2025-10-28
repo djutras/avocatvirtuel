@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Accent Logo - With/Without Symbol Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-option {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-option.active {
+            border: 3px solid #10b981;
+            background: #f0fdf4;
+        }
+
+        .logo-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            width: 100%;
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .logo-description {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .status-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .status-badge.proposed {
+            background: #3b82f6;
+        }
+
+        /* Current Logo with scales */
+        .logo-with-symbol {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .logo-with-symbol::after {
+            content: '⚖';
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+
+        /* Proposed Logo without scales */
+        .logo-without-symbol {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .header-preview {
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .header-logo.with-symbol::after {
+            content: '⚖';
+            position: absolute;
+            top: 3px;
+            right: 4px;
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+
+        .header-logo.without-symbol {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .header-preview-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Legal Accent Logo Comparison</h1>
+        <p class="subtitle">Preview: Keep gradient but remove the scales symbol</p>
+
+        <div class="comparison">
+            <!-- Current Version -->
+            <div class="logo-option active">
+                <div class="logo-display">
+                    <div class="logo-with-symbol">AV</div>
+                </div>
+                <div class="logo-title">Current Version</div>
+                <div class="logo-description">
+                    Dark professional gradient with subtle scales symbol (⚖) in top-right corner.
+                </div>
+                <div class="status-badge">Currently Live</div>
+            </div>
+
+            <!-- Proposed Version -->
+            <div class="logo-option">
+                <div class="logo-display">
+                    <div class="logo-without-symbol">AV</div>
+                </div>
+                <div class="logo-title">Proposed Version</div>
+                <div class="logo-description">
+                    Same dark professional gradient but without the scales symbol for a cleaner look.
+                </div>
+                <div class="status-badge proposed">Proposed</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <h2 style="color: #1e293b; margin-bottom: 1.5rem; font-size: 1.5rem;">How it looks in the header:</h2>
+        </div>
+
+        <!-- Current Header Preview -->
+        <div class="header-preview">
+            <div class="header-logo with-symbol">AV</div>
+            <div class="brand-name">Avocat Virtuel</div>
+            <div class="header-preview-label" style="position: absolute; right: 2rem; color: #94a3b8; font-size: 0.8rem;">Current</div>
+        </div>
+
+        <!-- Proposed Header Preview -->
+        <div class="header-preview" style="margin-top: 1rem;">
+            <div class="header-logo without-symbol">AV</div>
+            <div class="brand-name">Avocat Virtuel</div>
+            <div class="header-preview-label" style="position: absolute; right: 2rem; color: #94a3b8; font-size: 0.8rem;">Proposed</div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 2rem; margin-top: 2rem; text-align: center;">
+            <p style="color: #64748b; line-height: 1.6;">
+                The proposed version removes the scales symbol (⚖) while keeping the dark professional gradient. 
+                This creates a cleaner, more minimalist legal branding while maintaining the sophisticated appearance.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
