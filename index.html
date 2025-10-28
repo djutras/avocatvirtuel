@@ -41,11 +41,26 @@
 
         .logo {
             background: white;
-            color: #475569;
+            border: 2.5px solid #3b82f6;
+            color: #3b82f6;
             padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            position: relative;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            border-radius: 0 0 6px 6px;
         }
 
         .brand-name {
